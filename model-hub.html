@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Hub - PPE Safety</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <style>
+        .model-list { display: flex; flex-direction: column; gap: 15px; }
+        .model-row { 
+            background: var(--bg-card); border: 1px solid var(--border-color);
+            padding: 1rem 1.5rem; border-radius: 12px; display: flex; justify-content: space-between;
+            align-items: center; transition: var(--transition-fast);
+        }
+        .model-row:hover { background: var(--bg-card-hover); cursor: pointer; }
+        .model-info h4 { font-size: 1.1rem; margin-bottom: 4px; display: flex; align-items: center; gap: 10px; }
+        .model-info p { color: var(--text-secondary); font-size: 0.85rem; }
+        .model-stats { display: flex; gap: 20px; }
+        .stat-item { display: flex; flex-direction: column;  }
+        .stat-label { font-size: 0.75rem; color: var(--text-secondary); }
+        .stat-val { font-weight: 600; color: var(--text-primary); }
+        .active-badge { background: rgba(0, 240, 255, 0.1); color: var(--accent-cyan); padding: 3px 8px; border-radius: 4px; font-size: 0.7rem; border: 1px solid var(--accent-cyan); }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="brand">
+                <div class="logo">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" stroke="#00F0FF" />
+                        <circle cx="12" cy="12" r="4" fill="#00F0FF" />
+                    </svg>
+                </div>
+                <h2>SafeSight</h2>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="live-inference.html">Live Inference</a></li>
+                <li class="active"><a href="model-hub.html">Model Hub</a></li>
+                <li><a href="settings.html">Settings</a></li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <header class="header">
+                <div class="title-area">
+                    <h1>Model Hub</h1>
+                    <p class="subtitle">Manage Roboflow detection models and review training iterations.</p>
+                </div>
+                <div class="header-actions">
+                    <button class="primary-btn" style="background: transparent; border: 1px solid var(--accent-cyan); color: var(--accent-cyan);">Import Model</button>
+                    <button class="primary-btn">Train New Version</button>
+                </div>
+            </header>
+
+            <div class="content-grid" style="padding-top: 2rem;">
+                <h3 class="section-title">Available Models</h3>
+                
+                <div class="model-list">
+                    <div class="model-row" style="border-left: 3px solid var(--accent-cyan);">
+                        <div class="model-info">
+                            <h4>PPE-YOLOv8-v2.1 <span class="active-badge">Active Deployment</span></h4>
+                            <p>Trained on 5,200 images • Classes: Helmet, Vest</p>
+                        </div>
+                        <div class="model-stats">
+                            <div class="stat-item"><span class="stat-label">mAP@50</span><span class="stat-val">70.6%</span></div>
+                            <div class="stat-item"><span class="stat-label">Precision</span><span class="stat-val">74.8%</span></div>
+                            <div class="stat-item"><span class="stat-label">Recall</span><span class="stat-val">77.3%</span></div>
+                            <div class="stat-item"><span class="stat-label">Inference</span><span class="stat-val">12ms</span></div>
+                        </div>
+                        <div class="model-actions">
+                            <button class="primary-btn" style="padding: 0.4rem 1rem; font-size: 0.8rem; box-shadow: none;">View Details</button>
+                        </div>
+                    </div>
+
+                    <div class="model-row">
+                        <div class="model-info">
+                            <h4>PPE-YOLOv8-v1.0</h4>
+                            <p>Trained on 2,100 images • Classes: Helmet</p>
+                        </div>
+                        <div class="model-stats" style="opacity: 0.7;">
+                            <div class="stat-item"><span class="stat-label">mAP@50</span><span class="stat-val">58.2%</span></div>
+                            <div class="stat-item"><span class="stat-label">Precision</span><span class="stat-val">61.0%</span></div>
+                            <div class="stat-item"><span class="stat-label">Recall</span><span class="stat-val">64.5%</span></div>
+                            <div class="stat-item"><span class="stat-label">Inference</span><span class="stat-val">10ms</span></div>
+                        </div>
+                        <div class="model-actions">
+                            <button class="primary-btn" style="padding: 0.4rem 1rem; font-size: 0.8rem; background: var(--bg-surface); color: var(--text-primary); box-shadow: none;">Rollback</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PPE Safety Detection Dashboard</title>
+    <!-- Google Fonts for typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="brand">
+                <div class="logo">
+                    <!-- Simple SVG dot as logo -->
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" stroke="#00F0FF" />
+                        <circle cx="12" cy="12" r="4" fill="#00F0FF" />
+                    </svg>
+                </div>
+                <h2>SafeSight</h2>
+            </div>
+            <ul class="nav-links">
+                <li class="active"><a href="index.html">Dashboard</a></li>
+                <li><a href="live-inference.html">Live Inference</a></li>
+                <li><a href="model-hub.html">Model Hub</a></li>
+                <li><a href="settings.html">Settings</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="title-area">
+                    <h1>Detection Overview</h1>
+                    <p class="subtitle">Real-time model performance vs. in-field statistics.</p>
+                </div>
+                <div class="header-actions">
+                    <button class="primary-btn">Deploy Model</button>
+                    <div class="profile">
+                        <img src="https://ui-avatars.com/api/?name=Admin&background=0D8ABC&color=fff" alt="User Profile">
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="content-grid">
+
+                <!-- Lab Test Metrics Section -->
+                <section class="section metrics-section">
+                    <h3 class="section-title">Roboflow Lab Results</h3>
+                    <div class="metrics-grid">
+                        <div class="metric-card" data-hover-glow="cyan">
+                            <div class="metric-icon mAP-icon"></div>
+                            <div class="metric-info">
+                                <span class="metric-label">mAP@50</span>
+                                <h3 class="metric-value">70.6<span class="unit">%</span></h3>
+                            </div>
+                        </div>
+                        <div class="metric-card" data-hover-glow="green">
+                            <div class="metric-icon precision-icon"></div>
+                            <div class="metric-info">
+                                <span class="metric-label">Precision</span>
+                                <h3 class="metric-value">74.8<span class="unit">%</span></h3>
+                            </div>
+                        </div>
+                        <div class="metric-card" data-hover-glow="purple">
+                            <div class="metric-icon recall-icon"></div>
+                            <div class="metric-info">
+                                <span class="metric-label">Recall</span>
+                                <h3 class="metric-value">77.3<span class="unit">%</span></h3>
+                            </div>
+                        </div>
+                        <div class="metric-card" data-hover-glow="orange">
+                            <div class="metric-icon f1-icon"></div>
+                            <div class="metric-info">
+                                <span class="metric-label">F1-Score</span>
+                                <h3 class="metric-value">74.1<span class="unit">%</span></h3>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Comparison / Theoretical Data section -->
+                <section class="section comparison-section">
+                    <div class="comparison-header">
+                        <h3 class="section-title">Field Performance (Simulated)</h3>
+                    </div>
+                    <div class="comparison-cards">
+                        <!-- Chart container -->
+                        <div class="chart-card">
+                            <div class="chart-header">
+                                <h4>Model Accuracy: Lab vs Field</h4>
+                                <span class="badge warning">No Live Data - Showing Concept</span>
+                            </div>
+                            <div class="bar-chart-container">
+                                <!-- Bars will be generated via JS -->
+                                <div id="comparison-chart"></div>
+                            </div>
+                        </div>
+
+                        <!-- Live feed container -->
+                        <div class="feed-card">
+                            <div class="feed-header">
+                                <h4>Camera Feed 01</h4>
+                                <span class="live-indicator"><span class="dot"></span>LIVE</span>
+                            </div>
+                            <div class="video-container">
+                                <div class="mock-video">
+                                    <!-- A mock construction scene bounding box over a worker -->
+                                    <div class="bounding-box safe" style="top: 20%; left: 30%; width: 40px; height: 35px;">
+                                        <span class="label">Helmet 98%</span>
+                                    </div>
+                                    <div class="bounding-box safe" style="top: 25%; left: 25%; width: 60px; height: 100px;">
+                                        <span class="label">Vest 92%</span>
+                                    </div>
+                                    <div class="scanning-beam"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Script loading -->
+    <script src="app.js"></script>
+</body>
+</html>
